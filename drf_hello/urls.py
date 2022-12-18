@@ -1,6 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 from django.views.generic import TemplateView
+from drf_hello.auth import urls as auth_urls
 from rest_framework.schemas import get_schema_view
 
 from drf_hello.quickstart import views
@@ -12,6 +13,7 @@ router.register(r'groups', views.GroupViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path('', include(auth_urls)),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('openapi', get_schema_view(public=True),

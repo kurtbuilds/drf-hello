@@ -48,9 +48,14 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
-# }
+REST_FRAMEWORK = {
+    "DEFAULT_PARSER_CLASSES": [
+        'rest_framework.parsers.JSONParser',
+        # 'rest_framework.parsers.FormParser',
+        # 'rest_framework.parsers.MultiPartParser'
+    ]
+    #     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 ROOT_URLCONF = "drf_hello.urls"
 
