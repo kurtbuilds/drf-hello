@@ -48,7 +48,7 @@ class TypedSchema(AutoSchema):
         self.original_fn = original_fn
 
     def get_operation_id(self, path, method):
-        return self.original_fn.__qualname__
+        return self.original_fn.__module__.split(".", 2)[1] + '.' + self.original_fn.__name__
 
     def get_description(self, path, method):
         return self.original_fn.__doc__
